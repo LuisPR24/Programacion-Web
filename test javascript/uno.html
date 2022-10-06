@@ -1,0 +1,129 @@
+
+        
+        <script>
+window.onload=function(){alert('Bienvenido');}
+window.onunload=function(){alert('Te esperamos de vuelta');}
+</script>
+
+
+
+<div id="fechahoy"></div>
+
+<script>
+    var d=new Date();var month=new
+    Array(12);month[0]='Enero';month[1]='Febrero';month[2]='Marzo';mon
+    th[3]='Abril';month[4]='Mayo';month[5]='Junio';month[6]='Julio';mo
+    nth[7]='Agosto';month[8]='Septiembre';month[9]='Octubre';month[10]
+    ='Noviembre';month[11]='Diciembre';var todaysDate=+d.getDate()+'
+    de '+month[d.getUTCMonth()]+' del '+d.getUTCFullYear();
+    document.getElementById('fechahoy').innerHTML='Hoy es:
+    '+todaysDate;
+    </script>
+<html>
+    <head>
+
+    <title>T E S T CONOCIMIENTOS GENERALES</title>
+    <script>
+    function resultado() {
+    var r1, r2, r3, r4, r5, nota;
+    <!-- 1a pregunta -->
+    if (document.getElementById('p11').checked==true) {r1=1}
+    else {r1=0}
+    <!-- 2a pregunta -->
+    if (document.getElementById('p22').checked==true) {r2=1}
+    else {r2=0}
+    <!-- 3a pregunta -->
+    if (document.getElementById('p33').checked==true) {r3=1}
+    else {r3=0}
+    <!-- 4a pregunta -->
+    if (document.getElementById('p44').checked==true) {r4=1}
+    else {r4=0}
+    <!-- 5a pregunta -->
+    if (document.getElementById('p54').checked==true) {r5=1}
+    else {r5=0}
+
+    nota=r1+r2+r3+r4+r5;
+    alert(" Aciertos totales: " + nota);
+    location.reload();
+    }
+
+    </script>
+
+
+    </head>
+    <body>
+
+        <h2>T E S T CONOCIMIENTO GENERALES</h2>
+<hr>
+<form style="font:normal 16px sans-serif">
+<p>1 ¿Qué significan las 3 Garantías? </p>
+<p onclick="this.style.color='#00FF00'"><input type="radio" name="pregunta1" id="p11"
+> Religión, unión e independencia. </p>
+<p onclick="this.style.color='#FF0000'"><input type="radio" name="pregunta1" id="p12"
+> Amor, Orden y progreso</p>
+<p onclick="this.style.color='#FF0000'"><input type="radio" name="pregunta1" id="p13"
+> Verde Blanco y Rojo</p>
+<p onclick="this.style.color='#FF0000'"><input type="radio" name="pregunta1" id="p14"
+>La niña,La pinta y La santa maria.</p>
+
+<br><br>
+
+<p>2 ¿Cuál era el nombre de México en la época colonial?</p> 
+<p onclick="this.style.color='#FF0000'"><input type="radio" name="pregunta2" id="p21"
+> Mexico Lindo y Querido</p>
+<p onclick="this.style.color='#00FF00'"><input type="radio" name="pregunta2" id="p22"
+> Nueva España</p>
+<p onclick="this.style.color='#FF0000'"><input type="radio" name="pregunta2" id="p23"
+> Tenochitlan</p>
+<p onclick="this.style.color='#FF0000'"><input type="radio" name="pregunta2" id="p24"
+> Reino de los cielos</p>
+
+<br><br>
+<p>3 ¿Qué selección ganó la primera Copa del Mundo (1930)?</p>
+<p onclick="this.style.color='#FF0000'"><input type="radio" name="pregunta3" id="p31"
+> Mexico.</p>
+<p onclick="this.style.color='#FF0000'"><input type="radio" name="pregunta3" id="p32"
+> España</p>
+<p onclick="this.style.color='#00FF00'"><input type="radio" name="pregunta3" id="p33"
+> Uruguay</p>
+<p onclick="this.style.color='#FF0000'"><input type="radio" name="pregunta3" id="p34"
+> Portugal.</p>
+
+<br><br>
+<p>4 ¿Qué jugador fue expulsado por morder a otro en el Mundial de 2014?</p>
+<p onclick="this.style.color='#FF0000'"><input type="radio" name="pregunta4" id="p41"
+> Hirving Lozano</p>
+<p onclick="this.style.color='#FF0000'"><input type="radio" name="pregunta4" id="p42"
+> Messi</p>
+<p onclick="this.style.color='#FF0000'"><input type="radio" name="pregunta4" id="p43"
+> Cristiano Ronaldo</p>
+<p onclick="this.style.color='#00FF00'"><input type="radio" name="pregunta4" id="p44"
+> Luis Suarez</p>
+ 
+<br><br>
+<p>5 ¿Quién es el máximo goleador de la historia de la Copa Mundial de Fútbol?</p>
+<p onclick="this.style.color='#FF0000'"><input type="radio" name="pregunta5" id="p51"
+> Pelé</p>
+<p onclick="this.style.color='#FF0000'"><input type="radio" name="pregunta5" id="p52"
+> Messi</p>
+<p onclick="this.style.color='#FF0000'"><input type="radio" name="pregunta5" id="p53"
+> Gerd Müller</p>
+<p onclick="this.style.color='#00FF00'"><input type="radio" name="pregunta5" id="p54"
+> Miroslav Klose</p>
+<hr>
+<p><input type="button" value=" R E S U L T A D O " onclick="resultado()"/></p>
+</form>
+
+<input type="button" value="reiniciar"
+onclick="document.querySelectorAll('[name=pregunta1]').forEach((x) => x.checked=false);
+document.querySelectorAll('[name=pregunta2]').forEach((x) => x.checked=false);
+document.querySelectorAll('[name=pregunta3]').forEach((x) => x.checked=false);
+document.querySelectorAll('[name=pregunta4]').forEach((x) => x.checked=false);
+document.querySelectorAll('[name=pregunta5]').forEach((x) => x.checked=false);"
+>
+
+<input type="button" value="Imprime esta página"
+onclick="window.print()">
+
+</body>
+</html>
