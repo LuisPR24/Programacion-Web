@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario</title>
+    <link rel="stylesheet" href="estilos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="formulario">
+      <div id="mensaje">Todos los campos son obligatorios</div>
+      <div id="registrado">Se ha registrado al usuario</div>
+      <form action="#" id="formData">
+        <h1>Registrate!</h1>
+        <fieldset>
+          <label for="usuario">Usuario</label>
+          <input
+            type="text"
+            placeholder="Introduce tu usuario"
+            name="usuario"
+            required
+            id="nombre"
+          />
+        </fieldset>
+
+        <fieldset>
+          <label for="contraseña">Password</label>
+          <input
+            type="password"
+            placeholder="Introduce contraseña"
+            name="contraseña"
+            required
+            id="password"
+          />
+        </fieldset>
+
+        <fieldset>
+          <label for="email">Email</label>
+          <input
+            type="email"
+            placeholder="Escribe tu correo"
+            name="email"
+            required
+            id="email"
+          />
+        </fieldset>
+
+        <fieldset>
+          <label for="telefono">Telefono</label>
+          <input
+            type="phone"
+            placeholder="Numero de teléfono"
+            name="telefono"
+            required
+            id="telefono"
+          />
+        </fieldset>
+
+        <fieldset>
+          <label for="genero">Genero</label>
+          <div class="generos">
+            <div>
+              <input
+                type="radio"
+                name="genero"
+                value="femenino"
+                required
+                id="femenino"
+              /><label>Femenino</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="genero"
+                value="masculino"
+                id="masculino"
+                required
+              /><label>Masculino</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="genero"
+                value="otro"
+                required
+                id="otro"
+              /><label>Otro</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <select class="selector" name="estado" required id="entidad">
+            <option selected hidden value="">Entidad Federativa</option>
+            <option value="aguascalientes">Aguascalientes</option>
+            <option value="chihuahua">Chihuahua</option>
+            <option value="colima">Colima</option>
+            <option value="durango">Durango</option>
+            <option value="guadalajara">Guadalajara</option>
+            <option value="guanajuato">Guanajuato</option>
+            <option value="hidalgo">Hidalgo</option>
+            <option value="zacatecas">Zacatecas</option>
+          </select>
+        </fieldset>
+
+        <fieldset>
+          <input type="submit" value="Registrar" name="enviar" id="enviar" />
+        </fieldset>
+      </form>
+    </div>
+
+    <script>
+      const btnEnviar = document.querySelector("#enviar");
+
+      let username = document.querySelector("#nombre");
+      let password = document.querySelector("#password");
+      let email = document.querySelector("#email");
+      let telefono = document.querySelector("#telefono");
+
+      let femenino = document.querySelector("#femenino");
+      let masculino = document.querySelector("#masculino");
+      let otro = document.querySelector("#otro");
+
+      let entidad = document.querySelector("#entidad");
+
+      let mensaje = document.querySelector("#mensaje");
+      let registrado = document.querySelector("#registrado");
+      let formData = document.querySelector("#formData");
+
+      btnEnviar.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (
+          username.value &&
+          password.value &&
+          email.value &&
+          telefono.value &&
+          (femenino.checked || masculino.checked || otro.checked) &&
+          entidad.value
+        ) {
+          let genero;
+
+          if (femenino.checked) {
+            genero = femenino.value;
+          }
+          if (masculino.checked) {
+            genero = masculino.value;
+          }
+          if (otro.checked) {
+            genero = otro.value;
+          }
+
+          let usuario = {
+            usuario: username.value,
+            password: password.value,
+            email: email.value,
+            telefono: telefono.value,
+            genero: genero,
+            entidad: entidad.value,
+          };
+
+          const data = JSON.stringify(usuario);
+
+          console.log(data);
+
+          fetch("http://localhost/ConexionDBPHP/form.php", {
+            method: "POST",
+            body: data,
+          })
+            .then(function (response) {
+              if (response.ok) {
+                return response.text();
+              } else {
+                throw "Error en la llamada Ajax";
+              }
+            })
+            .then(function (texto) {
+              console.log(texto);
+              formData.reset();
+              registrado.classList.add("show-mensaje");
+              setTimeout(() => {
+                registrado.classList.remove("show-mensaje");
+              }, 3000);
+            })
+            .catch(function (err) {
+              console.log(err);
+            });
+        } else {
+          mensaje.classList.add("show-mensaje");
+          setTimeout(() => {
+            mensaje.classList.remove("show-mensaje");
+          }, 3000);
+        }
+      });
+    </script>
+  </body>
+</html>
